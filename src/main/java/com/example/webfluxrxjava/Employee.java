@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 @Data
 @NoArgsConstructor
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Employee {
 
   @EqualsAndHashCode.Include
+  @Id
   private Long id;
   private String fullName;
   private BigDecimal salary;

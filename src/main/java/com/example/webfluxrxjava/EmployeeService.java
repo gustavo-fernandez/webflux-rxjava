@@ -1,17 +1,22 @@
 package com.example.webfluxrxjava;
 
-import java.math.BigDecimal;
-import java.util.List;
+import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
 
-  public Flux<Employee> findAll() {
-    return Flux.fromIterable(List.of(new Employee(1L, "Javier", BigDecimal.TEN)));
+  private final EmployeeRepository employeeRepository;
+
+  public Observable<Employee> findAll() {
+    return employeeRepository.findAll()
+      .toObservable();
   }
 
+  public Maybe<Employee> findById(Long id) {
+    return employeeRepository.findById(id);
+  }
 }
